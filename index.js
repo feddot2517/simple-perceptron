@@ -26,9 +26,12 @@ MnistRead('./dataset/mnist/mnist_train.csv',  (input, target) => {
                 accuracy+=1;
             }
             if(checkedCounter===10000) {
-                console.log(`${accuracy/100*100}% accuracy`);
-                fs.writeFileSync('./weight.txt', neuralNetwork._weightInputHidden);
-                fs.appendFileSync('./weight.txt', `\n${neuralNetwork._weightHiddenOutputs}`)
+                console.log(`${accuracy/10000*100}% accuracy`);
+                  /* you can write layer's weights into file like this.
+
+                  fs.writeFileSync('./weight.txt', neuralNetwork._weightInputHidden);
+                  fs.appendFileSync('./weight.txt', `\n${neuralNetwork._weightHiddenOutputs}`)
+                  */
             }
         });
         checkedCounter=0;
