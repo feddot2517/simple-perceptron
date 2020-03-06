@@ -26,7 +26,6 @@ class Perceptron {
     }
 
     train(inputsValue, outputsValue) {
-        // WAT A HELL_________________________________________________________________________________
         const inputs = Matrix.T(Matrix.fromArray(inputsValue, 1));
         const targets = Matrix.T(Matrix.fromArray(outputsValue, 1));
 
