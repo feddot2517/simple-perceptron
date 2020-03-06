@@ -16,8 +16,8 @@ MnistRead('./dataset/mnist/mnist_train.csv',  (input, target) => {
     counter++;
     if(counter%10000===0) console.log(`${counter}/60000`);
 
-    if(counter%200===0) {
-        MnistRead('./dataset/mnist/mnist_train_100.csv', (input, target)=>{
+    if(counter%10000===0) {
+        MnistRead('./dataset/mnist/mnist_test.csv', (input, target)=>{
             checkedCounter+=1;
             const response = neuralNetwork.query(input);
             const responseMax = getMaxOfArray(response);
@@ -25,8 +25,8 @@ MnistRead('./dataset/mnist/mnist_train.csv',  (input, target) => {
             if(response.indexOf(responseMax)===target.indexOf(targetMax)) {
                 accuracy+=1;
             }
-            if(checkedCounter===100) {
-                console.log(`${accuracy/100*100}% точность`);
+            if(checkedCounter===10000) {
+                console.log(`${accuracy/100*100}% accuracy`);
                 fs.writeFileSync('./weight.txt', neuralNetwork._weightInputHidden);
                 fs.appendFileSync('./weight.txt', `\n${neuralNetwork._weightHiddenOutputs}`)
             }
